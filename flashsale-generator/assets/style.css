@@ -1,0 +1,70 @@
+.hidden-view { display: none !important; }
+.font-oswald { font-family: 'Oswald', sans-serif; }
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+/* Custom Scrollbar Mobile Friendly */
+.custom-scrollbar {
+    -webkit-overflow-scrolling: touch;
+}
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #171925; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #3a3962; border-radius: 4px; }
+
+/* Inputs Standard V2.0 */
+.flowork-input {
+    width: 100%;
+    background-color: #3a3962; /* Dark Indigo */
+    border: 1px solid rgba(84, 215, 246, 0.2);
+    color: #e0f0ff;
+    padding: 12px;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s;
+}
+.flowork-input:focus {
+    border-color: #54d7f6;
+    box-shadow: 0 0 15px rgba(84, 215, 246, 0.2);
+}
+
+.flowork-btn-primary {
+    background-color: #54d7f6; /* Cyber Cyan */
+    color: #171925;
+    font-weight: 900;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s;
+}
+.flowork-btn-primary:active { transform: scale(0.98); }
+
+/* ... CSS SEBELUMNYA TETAP ... */
+
+/* FIX DATE PICKER (Biar Icon Putih & Bisa Diklik) */
+input[type="datetime-local"] {
+    position: relative;
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0; color: transparent; cursor: pointer;
+    height: auto; left: 0; position: absolute; right: 0; top: 0; width: auto;
+    z-index: 10;
+}
+input[type="datetime-local"]::after {
+    content: "📅"; /* Fallback icon */
+    position: absolute; right: 10px; color: #54d7f6; pointer-events: none;
+}
+
+/* CUSTOM MODAL ANIMATION */
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+.cyber-modal-enter { animation: modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* MODAL TYPES */
+.modal-error { border-color: #ff003c !important; box-shadow: 0 0 30px rgba(255, 0, 60, 0.2) !important; }
+.modal-error h3 { color: #ff003c !important; }
+
+.modal-success { border-color: #54d7f6 !important; box-shadow: 0 0 30px rgba(84, 215, 246, 0.2) !important; }

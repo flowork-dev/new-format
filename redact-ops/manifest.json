@@ -1,0 +1,26 @@
+{
+    "id": "redact-ops",
+    "name": "Redact Ops - Secure Image Censorship",
+    "ver": "1.0.1",
+    "description": "Sanitize sensitive data from screenshots and photos before sharing. Pixelate, blur, or blackout private information locally using 100% client-side processing.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 6,
+    "default_height": 8,
+    "slug": "redact-ops",
+    "capabilities": [
+        "file_system",
+        "canvas_rendering",
+        "image_processing"
+    ],
+    "tags": [
+        "privacy",
+        "censorship",
+        "blur tool",
+        "pixelate",
+        "security"
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "id": "type-ops",
+    "name": "TYPE OPS PRO",
+    "ver": "3.5.0",
+    "description": "Tactical unicode text encoder and repeater. Generate unique font styles for social media and multiply strings for stress testing or messaging efficiency.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 10,
+    "default_height": 9,
+    "slug": "type-ops",
+    "capabilities": [
+        "local_storage",
+        "clipboard_access",
+        "unicode_processing"
+    ],
+    "tags": [
+        "utility",
+        "text-styler",
+        "generator",
+        "social-media",
+        "tools"
+    ]
+}

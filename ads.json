@@ -1,0 +1,56 @@
+{
+  "id": "ads_v2",
+  "iklan": "off",
+  "ads": [
+    {
+      "title": "VPS KENCENG DISKON 70%",
+      "link": "https://flowork.cloud/promo/vps",
+      "cta": "CLAIM NOW"
+    },
+    {
+      "title": "JAGO CODING DALAM 1 MINGGU",
+      "link": "https://flowork.cloud/course/coding",
+      "cta": "JOIN KELAS"
+    },
+    {
+      "title": "TRADING CRYPTO BONUS $100",
+      "link": "https://flowork.cloud/affiliate/crypto",
+      "cta": "TRADE NOW"
+    },
+    {
+      "title": "10.000+ FONT PREMIUM BUNDLE",
+      "link": "https://flowork.cloud/assets/design",
+      "cta": "DOWNLOAD"
+    },
+    {
+      "title": "AKSES GPT-4 GRATIS TANPA VPN",
+      "link": "https://flowork.cloud/ai/tools",
+      "cta": "COBA AI"
+    },
+    {
+      "title": "CARI CUAN SAMPINGAN $500/BLN",
+      "link": "https://flowork.cloud/freelance/jobs",
+      "cta": "START EARNING"
+    },
+    {
+      "title": "FLASH SALE IPHONE 15 PRO",
+      "link": "https://shopee.co.id/flash-sale",
+      "cta": "BELI SEKARANG"
+    },
+    {
+      "title": "INTERNET AMAN ANTI BLOKIR",
+      "link": "https://flowork.cloud/vpn/secure",
+      "cta": "GET VPN"
+    },
+    {
+      "title": "TOP UP GAME TERMURAH SE-INDO",
+      "link": "https://flowork.cloud/game/topup",
+      "cta": "TOP UP"
+    },
+    {
+      "title": "KELOLA TIM PAKAI NOTION PRO",
+      "link": "https://flowork.cloud/productivity/notion",
+      "cta": "UPGRADE"
+    }
+  ]
+}

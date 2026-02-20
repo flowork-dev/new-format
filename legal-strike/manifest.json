@@ -1,0 +1,27 @@
+{
+    "id": "legal-strike",
+    "ver": "1.0.3",
+    "name": "LEGAL STRIKE - AUTO C&D / NDA GENERATOR",
+    "version": "1.0.0",
+    "description": "Tactical legal document generator. Create intimidating, legally sound Cease & Desist letters and NDAs automatically without a lawyer. Outputs official A4 PDFs.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "slug": "legal-strike",
+    "capabilities": [
+        "local_processing",
+        "pdf_export",
+        "dom_manipulation"
+    ],
+    "tags": [
+        "legal tool",
+        "cease and desist",
+        "nda maker",
+        "contract generator",
+        "business protection"
+    ],
+    "_comment_default_width": 12,
+    "_comment_default_height": 9
+}

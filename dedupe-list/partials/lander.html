@@ -1,0 +1,103 @@
+<!DOCTYPE  html >
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>APP INFO</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/assets/lander/main.js"></script>
+<link rel="stylesheet" href="/assets/lander/style.css">
+</head>
+<body class="hide-scrollbar">
+<div class="w-full min-h-screen relative max-w-7xl mx-auto px-4 lg:px-8">
+
+    <div class="desktop-grid">
+
+        <div class="relative z-10 animate-fade-in">
+            <div class="px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full inline-flex items-center w-fit mb-4">
+                <span class="text-[10px] text-amber-500 font-bold tracking-widest flex items-center gap-1 uppercase">
+                    <i data-lucide="layers" class="w-3 h-3"></i> LIST CLEANER V2.0
+                </span>
+            </div>
+
+            <h1 class="text-4xl lg:text-6xl font-black leading-tight mb-4 font-display">
+                DATA KEMBAR? <br> <span class="gradient-text">BERSIHKAN INSTAN.</span>
+            </h1>
+
+            <p class="text-sm lg:text-lg font-normal leading-relaxed max-w-md" style="color: var(--text-muted);">
+                Menghapus data ganda satu per satu adalah cara lama. Bersihkan, urutkan, dan rapikan ribuan baris email, user list, atau database config dalam milidetik.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-4 pb-32 mobile-spacer justify-center">
+
+            <div class="glass-panel p-5 rounded-2xl">
+                <div class="flex items-center gap-3 mb-4 border-b border-white/5 pb-2">
+                    <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500">
+                        <i data-lucide="play-circle" class="w-4 h-4"></i>
+                    </div>
+                    <h3 class="text-sm font-bold">Workflow</h3>
+                </div>
+
+                <ul class="space-y-4">
+                    <li class="flex gap-3">
+                        <span class="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-[10px] font-bold">1</span>
+                        <div class="flex flex-col">
+                            <span class="text-xs font-bold mb-0.5">Paste Data</span>
+                            <span class="text-[10px] opacity-70" style="color: var(--text-muted);">Tempel list kotor yang berisi duplikat (Copy dari Excel/Notepad).</span>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-[10px] font-bold">2</span>
+                        <div class="flex flex-col">
+                            <span class="text-xs font-bold mb-0.5">Set Filters</span>
+                            <span class="text-[10px] opacity-70" style="color: var(--text-muted);">Pilih opsi: Case Sensitive, Trim Whitespace, atau Sort (A-Z).</span>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-[10px] font-bold">3</span>
+                        <div class="flex flex-col">
+                            <span class="text-xs font-bold mb-0.5">Clean Result</span>
+                            <span class="text-[10px] opacity-70" style="color: var(--text-muted);">Dapatkan list bersih yang siap dipakai. Copy dengan sekali klik.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="glass-panel p-4 rounded-xl">
+                    <i data-lucide="zap" class="w-5 h-5 mb-2 text-amber-500"></i>
+                    <h4 class="text-xs font-bold mb-1">High Performance</h4>
+                    <p class="text-[10px] leading-relaxed" style="color: var(--text-muted);">
+
+                        Mampu memproses hingga 10.000+ baris data dalam waktu kurang dari 0.5 detik.
+                    </p>
+                </div>
+                <div class="glass-panel p-4 rounded-xl">
+                    <i data-lucide="shield-check" class="w-5 h-5 mb-2 text-green-500"></i>
+                    <h4 class="text-xs font-bold mb-1">Privacy First</h4>
+                    <p class="text-[10px] leading-relaxed" style="color: var(--text-muted);">
+                        Data sensitif Anda diproses lokal di browser. Tidak ada database yang disimpan di server.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-4 rounded-xl border-l-4" style="border-left-color: var(--primary);">
+                <h3 class="text-xs font-bold mb-1">Advanced Sorting</h3>
+                <p class="text-[10px]" style="color: var(--text-muted);">
+                    Mendukung pengurutan Numerik (1, 2, 10) dan Alfabetik (A, B, C) secara akurat.
+                </p>
+            </div>
+
+            <div class="text-center mt-2 px-4 lg:hidden">
+                <p class="text-[10px] italic opacity-50">
+                    "Clean data, clear mind."
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

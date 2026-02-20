@@ -1,0 +1,17 @@
+{
+    "id": "video-cloak",
+    "name": "ANTI DUPLICATE CONTENT, REUPLOAD AMAN",
+    "version": "1.0.0",
+    "description": "Senjata pertahanan digital. Suntikkan noise visual tak kasat mata ke dalam videomu. Jika AI coba Face Swap atau training, hasilnya bakal rusak. Aman untuk kreator konten.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "index.html",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 8,
+    "slug": "video-cloak",
+    "capabilities": ["video_processing", "file_io", "client_side_computation"],
+    "tags": ["security", "video", "ai-defense", "privacy", "anti-deepfake"],
+    "required_variables": []
+}

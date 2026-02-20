@@ -1,0 +1,25 @@
+{
+    "id": "vector-forge",
+    "name": "Vector Forge - Image to SVG",
+    "ver": "1.0.3",
+    "description": "Convert raster images into high-quality scalable vector graphics (SVG) with built-in smoothing and noise reduction.",
+    "author": "Flowork Neural Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "vector-forge",
+    "capabilities": [
+        "api_access",
+        "clipboard_write"
+    ],
+    "tags": [
+        "design",
+        "vector",
+        "svg",
+        "converter",
+        "image"
+    ]
+}

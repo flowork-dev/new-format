@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>DEDUPE LIST // FLOWORK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Rajdhani:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #050505; --panel-bg: #0f1014; --accent: #f59e0b; } /* Amber Orange */
+        body { background-color: var(--bg-dark); color: #e0f0ff; font-family: 'JetBrains Mono', monospace; overflow: hidden; height: 100dvh; display: flex; flex-direction: column; }
+        .font-hud { font-family: 'Rajdhani', sans-serif; }
+        .hidden-view { display: none !important; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0f1014; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .animate-enter { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+    <script src="../../assets/js/auto-tracker.js"></script>
+</head>
+<body class="flex flex-col relative">
+
+    <nav class="shrink-0 h-14 border-b border-[#222] bg-[#0f1014] flex items-center px-6 z-40 justify-between">
+        <div class="flex items-center gap-3 cursor-pointer group" onclick="window.location.reload()">
+            <div class="w-8 h-8 rounded bg-[#2e1c05] border border-[#5c3a0b] flex items-center justify-center group-hover:border-[#f59e0b] transition-colors">
+                <i data-lucide="list-filter" class="text-[#f59e0b] w-4 h-4"></i>
+            </div>
+            <h1 class="font-bold text-lg font-hud tracking-[0.2em] text-white">DEDUPE<span class="text-[#f59e0b]">LIST</span></h1>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button id="nav-app" class="text-[10px] font-bold tracking-widest text-white cursor-default transition-colors">TOOL</button>
+        </div>
+    </nav>
+
+    <main id="app-container" class="flex-1 relative w-full overflow-hidden flex flex-col">
+        <div id="view-app" class="w-full h-full absolute inset-0 bg-[#050505] z-10 flex flex-col overflow-hidden"></div>
+    </main>
+
+    <script src="js/dedupe-engine.js"></script>
+    <script>
+        const AppCore = {
+            async init() {
+                try {
+                    // Lander fetch removed, only loading App partial
+                    const appRes = await fetch('partials/app.html');
+
+                    if(appRes.ok) document.getElementById('view-app').innerHTML = await appRes.text();
+
+                    lucide.createIcons();
+
+                    // Init Engine
+                    if(window.DedupeEngine) setTimeout(() => window.DedupeEngine.init(), 100);
+
+                    window.AppCore = this;
+                } catch(e) { console.error("BOOT FAILED", e); }
+            }
+
+            // switchView function removed
+        };
+        document.addEventListener('DOMContentLoaded', () => AppCore.init());
+    </script>
+</body>
+</html>

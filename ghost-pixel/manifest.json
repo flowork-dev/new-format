@@ -1,0 +1,26 @@
+{
+    "id": "ghost-pixel",
+    "name": "Ghost Pixel - Steganography Tool",
+    "ver": "1.0.1",
+    "description": "Hide top-secret messages inside images. Advanced steganography with encryption support. 100% Client-side privacy.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 6,
+    "default_height": 8,
+    "slug": "ghost-pixel",
+    "capabilities": [
+        "file_system",
+        "canvas_processing",
+        "crypto"
+    ],
+    "tags": [
+        "steganography",
+        "privacy",
+        "encryption",
+        "hidden message",
+        "security"
+    ]
+}

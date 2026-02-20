@@ -1,0 +1,27 @@
+{
+    "id": "flashsale-generator",
+    "name": "FLASH HYPE - AUTO SALES BOOSTER & COUNTDOWN",
+    "ver": "1.0.1",
+    "description": "The ultimate weapon for Online Shops! Create flash sale pages with automatic countdowns. Data automatically wipes when the promo ends. Hassle-free, maximum profit.",
+    "author": "Flowork Commerce Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "flashsale-generator",
+    "capabilities": [
+        "internet_access",
+        "clipboard_write",
+        "local_storage"
+    ],
+    "tags": [
+        "sales",
+        "marketing",
+        "countdown",
+        "ecommerce",
+        "tools"
+    ],
+    "required_variables": []
+}

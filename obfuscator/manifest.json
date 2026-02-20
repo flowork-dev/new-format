@@ -1,0 +1,26 @@
+{
+    "id": "obfuscator",
+    "name": "obfuscator - PELINDUNG SCRIPT ANTI MALING & INSPECT ELEMENT",
+    "ver": "2.0.0",
+    "description": "Enkripsi logika JavaScript lu jadi 'bubur' digital. Anti-Debug, Anti-Tamper, dan Domain Lock. Bikin maling kode muntah darah pas coba baca logic lu.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 10,
+    "default_height": 8,
+    "slug": "obfuscator",
+    "capabilities": [
+        "file_io",
+        "client_side_computation",
+        "server_side_processing"
+    ],
+    "tags": [
+        "developer",
+        "security",
+        "obfuscator",
+        "encryption",
+        "anti-scrape"
+    ]
+}

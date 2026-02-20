@@ -1,0 +1,26 @@
+{
+    "id": "struk-tactical",
+    "name": "STRUK TACTICAL - THERMAL RECEIPT GENERATOR",
+    "ver": "2.0.0",
+    "description": "Professional thermal receipt generator. Customize store details, items, and branding. 100% private client-side rendering with high-resolution export.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "struk-tactical",
+    "capabilities": [
+        "local_storage",
+        "canvas_export",
+        "file_download"
+    ],
+    "tags": [
+        "business tool",
+        "receipt generator",
+        "finance",
+        "thermal printer",
+        "utility"
+    ]
+}

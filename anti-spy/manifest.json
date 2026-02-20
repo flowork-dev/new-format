@@ -1,0 +1,21 @@
+{
+    "id": "anti-spy",
+    "ver": "1.0.1",
+    "name": "How to Send Invisible Secret Messages in Chat - Anti Spy",
+    "version": "2.0.0",
+    "description": "Hide sensitive messages inside chat whitespaces. 100% Invisible Text to keep your chat privacy secure.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "slug": "anti-spy",
+    "capabilities": [
+        "clipboard_access"
+    ],
+    "tags": [
+        "security",
+        "encryption",
+        "privacy"
+    ]
+}

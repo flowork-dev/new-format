@@ -1,0 +1,27 @@
+{
+    "id": "image-encryption",
+    "name": "Image Encryption : Hide Secret Messages in Images",
+    "ver": "1.0.1",
+    "description": "Secure your communication by embedding encrypted text messages into image pixels invisibly (Steganography).",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "image-encryption",
+    "capabilities": [
+        "internet_access",
+        "clipboard_write",
+        "local_storage"
+    ],
+    "tags": [
+        "security",
+        "steganography",
+        "encryption",
+        "privacy",
+        "tools"
+    ],
+    "required_variables": []
+}

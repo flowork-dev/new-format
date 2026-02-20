@@ -1,0 +1,25 @@
+{
+    "id": "net-stalker",
+    "name": "SCAN JEROAN WEBSITE & LOKASI SERVER - TECH STACK DETECTOR",
+    "ver": "1.0.1",
+    "description": "Alat intip teknologi website. Temukan lokasi server asli, data DNS, dan teknologi yang dipakai kompetitor dengan presisi cyberpunk.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 10,
+    "default_height": 8,
+    "slug": "net-stalker",
+    "capabilities": [
+        "internet_access",
+        "cloud_sync"
+    ],
+    "tags": [
+        "network",
+        "dns",
+        "whois",
+        "cyberpunk",
+        "intel"
+    ]
+}

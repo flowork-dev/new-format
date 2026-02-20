@@ -1,0 +1,26 @@
+{
+  "id": "qr-generator",
+  "name": "QR Code (Generator)",
+  "ver": "1.0.1",
+  "description": "Tactical QR Code Generator. Create custom QR codes for URLs, Text, and WiFi with logo integration and gradient styling. Export to SVG/PNG.",
+  "author": "Flowork Cyber Division",
+  "tier": "free",
+  "type": "logic",
+  "entry_point": "logic.js",
+  "icon_file": "icon.svg",
+  "default_width": 900,
+  "default_height": 700,
+  "resizeable": true,
+  "capabilities": [
+    "file_download",
+    "local_processing",
+    "image_processing"
+  ],
+  "tags": [
+    "qr code",
+    "generator",
+    "utility",
+    "business",
+    "marketing"
+  ]
+}

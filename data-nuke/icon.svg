@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff0000" /> <stop offset="100%" stop-color="#8b0000" /> </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" fill="transparent" />
+
+  <path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 396c-103.7 0-188-84.3-188-188S152.3 68 256 68s188 84.3 188 188-84.3 188-188 188z" fill="#1a1a1a"/>
+
+  <g filter="url(#glow)">
+    <circle cx="256" cy="256" r="40" fill="url(#grad)" />
+
+    <path d="M256 196v-80c70 0 130 40 155 100l-68 40c-15-35-50-60-87-60z" fill="url(#grad)" />
+
+    <path d="M316 296l68 40c-25 60-85 100-155 100v-80c37 0 72-25 87-60z" fill="url(#grad)" />
+
+    <path d="M196 296c15 35 50 60 87 60v80c-70 0-130-40-155-100l68-40z" fill="url(#grad)" />
+  </g>
+
+  <path d="M0 200h512v10H0z" fill="#000" opacity="0.3" />
+  <path d="M50 300h400v5H50z" fill="#000" opacity="0.3" />
+  <path d="M300 150h200v8H300z" fill="#000" opacity="0.3" />
+</svg>

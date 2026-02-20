@@ -1,0 +1,25 @@
+{
+    "id": "link-ballistics",
+    "name": "LINK BALLISTICS - ROTATOR GENERATOR",
+    "ver": "2.0.0",
+    "description": "Automatic WhatsApp rotator script generator. Distribute chat traffic to multiple Customer Services fairly (Round Robin) without a server database.",
+    "author": "Flowork Neural Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "link-ballistics",
+    "capabilities": [
+        "local_processing",
+        "clipboard_write"
+    ],
+    "tags": [
+        "whatsapp",
+        "marketing",
+        "generator",
+        "script",
+        "rotator"
+    ]
+}

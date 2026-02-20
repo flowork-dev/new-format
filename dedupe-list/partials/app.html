@@ -1,0 +1,104 @@
+<div class="flex flex-col h-full bg-[#050505]">
+
+    <div class="shrink-0 h-16 bg-[#0a0b10] border-b border-[#222] flex items-center justify-between px-6">
+        <div class="flex items-center gap-4">
+            <span class="text-[#f59e0b] font-bold font-hud tracking-widest">LIST PROCESSOR</span>
+        </div>
+        <div class="flex items-center gap-6 text-right">
+            <div>
+                <span class="text-[10px] text-gray-500 font-bold tracking-widest block">INPUT</span>
+                <span id="stat-input" class="text-white font-mono font-bold">0</span>
+            </div>
+            <div>
+                <span class="text-[10px] text-gray-500 font-bold tracking-widest block">OUTPUT</span>
+                <span id="stat-output" class="text-[#f59e0b] font-mono font-bold">0</span>
+            </div>
+            <div>
+                <span class="text-[10px] text-gray-500 font-bold tracking-widest block">REMOVED</span>
+                <span id="stat-removed" class="text-red-500 font-mono font-bold">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-1 flex flex-col md:flex-row overflow-hidden">
+
+        <div class="w-full md:w-64 bg-[#12131c] border-b md:border-b-0 md:border-r border-[#222] flex flex-col shrink-0 z-20">
+            <div class="p-6 space-y-6 overflow-y-auto">
+
+                <div class="space-y-4">
+                    <label class="text-[10px] text-gray-500 font-bold tracking-widest block">OPTIONS</label>
+
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                        <div class="relative flex items-center">
+                            <input type="checkbox" id="opt-lowercase" class="peer sr-only">
+                            <div class="w-5 h-5 border-2 border-gray-600 rounded bg-black peer-checked:bg-[#f59e0b] peer-checked:border-[#f59e0b] transition-colors"></div>
+                            <i data-lucide="check" class="w-3 h-3 text-black absolute left-1 top-1 opacity-0 peer-checked:opacity-100"></i>
+                        </div>
+                        <div class="flex-1">
+                            <span class="text-sm font-bold text-gray-300 group-hover:text-white">Ignore Capitals</span>
+                            <p class="text-[10px] text-gray-500">Hasil jadi huruf kecil semua</p>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                        <div class="relative flex items-center">
+                            <input type="checkbox" id="opt-keep-blanks" class="peer sr-only">
+                            <div class="w-5 h-5 border-2 border-gray-600 rounded bg-black peer-checked:bg-[#f59e0b] peer-checked:border-[#f59e0b] transition-colors"></div>
+                            <i data-lucide="check" class="w-3 h-3 text-black absolute left-1 top-1 opacity-0 peer-checked:opacity-100"></i>
+                        </div>
+                        <div class="flex-1">
+                            <span class="text-sm font-bold text-gray-300 group-hover:text-white">Keep Blanks</span>
+                            <p class="text-[10px] text-gray-500">Jangan hapus spasi di awal baris</p>
+                        </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                        <div class="relative flex items-center">
+                            <input type="checkbox" id="opt-sort" class="peer sr-only" checked>
+                            <div class="w-5 h-5 border-2 border-gray-600 rounded bg-black peer-checked:bg-[#f59e0b] peer-checked:border-[#f59e0b] transition-colors"></div>
+                            <i data-lucide="check" class="w-3 h-3 text-black absolute left-1 top-1 opacity-0 peer-checked:opacity-100"></i>
+                        </div>
+                        <div class="flex-1">
+                            <span class="text-sm font-bold text-gray-300 group-hover:text-white">Sort Results</span>
+                            <p class="text-[10px] text-gray-500">Urutkan A-Z</p>
+                        </div>
+                    </label>
+                </div>
+
+                <hr class="border-[#222]">
+
+                <div class="space-y-3">
+                    <button onclick="DedupeEngine.process()" class="w-full py-3 bg-[#f59e0b] hover:bg-[#d97706] text-black font-black tracking-widest rounded transition-all shadow-[0_0_20px_rgba(245,158,11,0.2)] flex items-center justify-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> PROCESS
+                    </button>
+
+                    <button onclick="DedupeEngine.clearAll()" class="w-full py-2 border border-red-900/50 text-red-500 hover:bg-red-900/10 text-xs font-bold rounded">
+                        RESET ALL
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex-1 flex flex-col md:flex-row h-full">
+
+            <div class="flex-1 flex flex-col border-b md:border-b-0 md:border-r border-[#222]">
+                <div class="p-2 bg-[#0a0b10] border-b border-[#222] flex justify-between items-center">
+                    <span class="text-[10px] font-bold text-gray-400 px-2">ORIGINAL LIST</span>
+                    <button onclick="DedupeEngine.paste()" class="text-[10px] text-[#f59e0b] hover:text-white flex items-center gap-1 bg-[#f59e0b]/10 px-2 py-1 rounded"><i data-lucide="clipboard" class="w-3 h-3"></i> PASTE</button>
+                </div>
+                <textarea id="input-text" class="flex-1 bg-[#050505] text-gray-300 p-4 outline-none resize-none font-mono text-sm leading-relaxed placeholder-gray-700 whitespace-pre" placeholder="Paste list kamu di sini...&#10;Satu&#10;Dua&#10;Satu (Duplikat)"></textarea>
+            </div>
+
+            <div class="flex-1 flex flex-col bg-[#08080a]">
+                <div class="p-2 bg-[#0a0b10] border-b border-[#222] flex justify-between items-center">
+                    <span class="text-[10px] font-bold text-[#f59e0b] px-2">CLEAN RESULT</span>
+                    <button onclick="DedupeEngine.copy()" class="text-[10px] text-[#f59e0b] hover:text-white flex items-center gap-1 bg-[#f59e0b]/10 px-2 py-1 rounded"><i data-lucide="copy" class="w-3 h-3"></i> COPY</button>
+                </div>
+                <textarea id="output-text" readonly class="flex-1 bg-[#08080a] text-[#f59e0b] p-4 outline-none resize-none font-mono text-sm leading-relaxed placeholder-gray-800 whitespace-pre" placeholder="Hasil bersih muncul di sini..."></textarea>
+            </div>
+
+        </div>
+
+    </div>
+</div>

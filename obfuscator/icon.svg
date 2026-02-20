@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#171925;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f111a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="256" cy="256" r="256" fill="url(#grad1)"/>
+
+  <path d="M256 460C256 460 410 380 410 230V110L256 50L102 110V230C102 380 256 460 256 460Z"
+        fill="none" stroke="#3a3962" stroke-width="15"/>
+
+  <path d="M256 440C256 440 390 370 390 230V120L256 70L122 120V230C122 370 256 440 256 440Z"
+        fill="none" stroke="#54d7f6" stroke-width="8" filter="url(#glow)"/>
+
+  <g transform="translate(146, 160) scale(0.9)">
+    <path d="M60 40 L30 70 L30 130 L60 160" fill="none" stroke="#706bf3" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M180 40 L210 70 L210 130 L180 160" fill="none" stroke="#706bf3" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <line x1="160" y1="20" x2="80" y2="180" stroke="#e0f0ff" stroke-width="15" stroke-linecap="round" opacity="0.9"/>
+
+    <rect x="220" y="50" width="20" height="10" fill="#54d7f6"/>
+    <rect x="10" y="120" width="15" height="15" fill="#54d7f6"/>
+  </g>
+</svg>

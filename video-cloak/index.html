@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Cloak | Ultimate Defense</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-core: #171925;
+            --neon-cyan: #54d7f6;
+            --neon-purple: #706bf3;
+            --neon-red: #ff003c;
+            --input-bg: #3a3962;
+            --text-white: #e0f0ff;
+            --glass: rgba(23, 25, 37, 0.95);
+        }
+
+        body {
+            background-color: var(--bg-core);
+            color: var(--text-white);
+            font-family: 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            margin: 0; padding: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+        .hidden-view { display: none !important; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f111a; }
+        ::-webkit-scrollbar-thumb { background: var(--input-bg); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-cyan); }
+
+        /* Glass Effect */
+        .glass { background: var(--glass); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(84, 215, 246, 0.1); }
+        .nav-btn { font-family: 'Orbitron'; letter-spacing: 2px; font-size: 0.8rem; opacity: 0.5; transition: 0.3s; color: white; border-bottom: 2px solid transparent; }
+        .nav-btn.active { opacity: 1; color: var(--neon-cyan); border-bottom-color: var(--neon-cyan); text-shadow: 0 0 10px rgba(84, 215, 246, 0.5); }
+
+        .bg-grid { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(var(--input-bg) 1px, transparent 1px), linear-gradient(90deg, var(--input-bg) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.1; z-index: -1; pointer-events: none; }
+
+        input[type=range] { -webkit-appearance: none; background: transparent; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%;
+            background: var(--neon-cyan); cursor: pointer; margin-top: -6px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px; cursor: pointer; background: var(--input-bg); border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div class="bg-grid"></div>
+
+    <header class="glass h-16 shrink-0 flex items-center justify-between px-4 md:px-6 z-50 sticky top-0">
+        <div class="flex items-center gap-3">
+            <div class="p-1.5 border border-cyan-500/50 rounded bg-cyan-900/20">
+                <i class="mdi mdi-shield-lock text-cyan-400 text-xl"></i>
+            </div>
+            <div>
+                <h1 class="orbitron text-lg font-bold leading-none tracking-widest text-white">VIDEO <span class="text-cyan-400">CLOAK</span></h1>
+                <div class="text-[9px] text-purple-400 tracking-[0.3em] font-bold mt-0.5">ULTIMATE EDITION</div>
+            </div>
+        </div>
+        <div class="flex h-full gap-4 md:gap-6">
+            <button onclick="window.appCore.switchTab('lander')" id="tab-lander" class="nav-btn h-full flex items-center">PROTOCOL</button>
+            <button onclick="window.appCore.switchTab('app')" id="tab-app" class="nav-btn h-full flex items-center">JAMMER</button>
+        </div>
+    </header>
+
+    <main class="flex-1 w-full relative">
+        <div id="view-lander" class="w-full h-full"></div>
+        <div id="view-app" class="hidden-view w-full h-full"></div>
+    </main>
+
+    <script>
+        const AppCore = {
+            vueApp: null,
+
+            async init() {
+                console.log("SYSTEM READY");
+                await this.loadPartial('view-lander', 'partials/lander.html');
+
+                // INJECT APP UI DIRECTLY
+                const appHTML = `
+                <div id="app-mount-point" class="w-full h-full flex flex-col font-sans">
+                    <div class="flex-1 flex flex-col md:flex-row h-auto md:h-[calc(100vh-4rem)] p-3 md:p-6 gap-4 md:overflow-hidden">
+
+                        <div class="w-full md:flex-1 bg-black rounded-xl border border-[#3a3962] relative flex flex-col overflow-hidden shadow-2xl order-1 shrink-0 aspect-video md:aspect-auto group">
+
+                            <div v-if="!videoSrc" class="absolute inset-0 z-20 flex flex-col items-center justify-center cursor-pointer hover:bg-[#1f2133]/50 transition-colors p-4 text-center" @click="triggerUpload">
+                                <div class="w-16 h-16 md:w-20 md:h-20 bg-[#1f2133] rounded-full flex items-center justify-center mb-4 border border-[#54d7f6]/30 group-hover:border-[#54d7f6] group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(84,215,246,0.1)]">
+                                    <i class="mdi mdi-video-plus text-3xl md:text-4xl text-[#54d7f6]"></i>
+                                </div>
+                                <h3 class="orbitron text-white text-sm md:text-lg font-bold tracking-widest">UPLOAD VIDEO</h3>
+                                <p class="text-gray-500 text-[10px] md:text-xs mono mt-2">MP4 / WEBM / MOV</p>
+                                <input type="file" ref="fileInput" class="hidden" accept="video/*" @change="handleFile">
+                            </div>
+
+                            <div class="absolute inset-0 w-full h-full flex items-center justify-center bg-black">
+                                <video ref="videoRef" class="absolute top-0 left-0 w-[1px] h-[1px] opacity-0 pointer-events-none" crossorigin="anonymous" playsinline @ended="onVideoEnded"></video>
+                                <canvas ref="canvasRef" class="max-w-full max-h-full object-contain"></canvas>
+                            </div>
+
+                            <div v-if="videoSrc && !isProcessing" class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 hover:bg-black/40 transition-colors group">
+                                <button @click="togglePlayback" class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                                    <i :class="isPlaying ? 'mdi-pause' : 'mdi-play'" class="mdi text-3xl text-white"></i>
+                                </button>
+                            </div>
+
+                            <div v-if="isProcessing" class="absolute inset-0 z-30 bg-black/90 flex flex-col items-center justify-center backdrop-blur-sm">
+                                <div class="relative w-16 h-16 md:w-24 md:h-24 mb-4 md:mb-6">
+                                    <div class="absolute inset-0 border-4 border-[#3a3962] rounded-full"></div>
+                                    <div class="absolute inset-0 border-4 border-t-[#54d7f6] rounded-full animate-spin"></div>
+                                    <div class="absolute inset-0 flex items-center justify-center"><span class="orbitron font-bold text-white text-lg md:text-xl">{{ progressPercent }}%</span></div>
+                                </div>
+                                <div class="text-[#54d7f6] font-bold orbitron text-sm md:text-lg animate-pulse tracking-[0.2em]">PROCESSING...</div>
+                                <div class="text-gray-400 text-[10px] md:text-xs mono mt-2 bg-[#1f2133] px-3 py-1 rounded border border-[#3a3962]">{{ statusText }}</div>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-96 h-auto md:h-full shrink-0 flex flex-col gap-3 order-2 pb-10 md:pb-0 md:overflow-y-auto custom-scrollbar">
+
+                            <div class="bg-[#1f2133] p-4 rounded-xl border border-[#3a3962]">
+                                <h2 class="text-white font-bold orbitron flex items-center gap-2 text-sm md:text-base border-b border-gray-700 pb-3 mb-3">
+                                    <i class="mdi mdi-cogs text-[#54d7f6]"></i> CONFIGURATION
+                                </h2>
+
+                                <div class="flex items-center justify-between bg-black/30 p-2 rounded mb-1">
+                                    <div class="truncate text-[10px] mono text-gray-400 max-w-[60%]">
+                                        <span v-if="fileName">{{ fileName }}</span>
+                                        <span v-else>NO FILE SELECTED</span>
+                                    </div>
+                                    <button v-if="videoSrc && !isProcessing" @click="changeVideo" class="bg-red-500/20 hover:bg-red-500/40 text-red-400 text-[9px] font-bold px-2 py-1 rounded border border-red-500/30 transition-colors">
+                                        CHANGE INPUT
+                                    </button>
+                                </div>
+                                <div class="text-[10px] text-gray-500 mono flex justify-between">
+                                    <span>MODE: SWAP-SPLIT</span>
+                                    <span v-if="videoSrc" class="text-green-400 font-bold">READY</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-[#1f2133] p-4 rounded-xl border border-[#3a3962]">
+                                <label class="text-[10px] font-bold text-white orbitron mb-3 block border-b border-gray-700 pb-1">OUTPUT FORMAT</label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button @click="setAspectRatio('original')" :class="aspectRatio === 'original' ? 'bg-[#54d7f6] text-black' : 'bg-gray-700 text-gray-400'" class="py-2 rounded text-[10px] font-bold transition-colors">ORIGINAL</button>
+                                    <button @click="setAspectRatio('9:16')" :class="aspectRatio === '9:16' ? 'bg-[#54d7f6] text-black' : 'bg-gray-700 text-gray-400'" class="py-2 rounded text-[10px] font-bold transition-colors">TIKTOK (9:16)</button>
+                                    <button @click="setAspectRatio('16:9')" :class="aspectRatio === '16:9' ? 'bg-[#54d7f6] text-black' : 'bg-gray-700 text-gray-400'" class="py-2 rounded text-[10px] font-bold transition-colors">YT (16:9)</button>
+                                </div>
+                            </div>
+
+                            <div class="bg-[#1f2133] p-4 rounded-xl border border-[#3a3962] space-y-3">
+                                <div class="flex justify-between items-center border-b border-gray-700 pb-2 mb-2">
+                                    <span class="text-[10px] font-bold text-white orbitron">AUDIO MIXER</span>
+                                    <button @click="toggleAudioPreview" :disabled="!videoSrc || isProcessing" :class="isPreviewingAudio ? 'text-red-400 animate-pulse' : 'text-[#54d7f6]'" class="text-[10px] font-bold hover:underline disabled:opacity-50">
+                                        <i :class="isPreviewingAudio ? 'mdi mdi-stop' : 'mdi mdi-play'"></i> {{ isPreviewingAudio ? 'STOP' : 'TEST AUDIO' }}
+                                    </button>
+                                </div>
+                                <div>
+                                    <label class="block text-[9px] font-mono text-green-400 mb-1 flex justify-between"><span>ORIGINAL VOLUME</span> <span>{{ volOriginal }}%</span></label>
+                                    <input type="range" v-model="volOriginal" @input="updateAudioParams" min="0" max="150" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-green-500">
+                                </div>
+                                <div>
+                                    <label class="block text-[9px] font-mono text-[#54d7f6] mb-1 flex justify-between"><span>JAMMER (AUTO-FILL)</span> <span>{{ volJammer }}%</span></label>
+                                    <input type="range" v-model="volJammer" @input="updateAudioParams" min="0" max="150" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#54d7f6]">
+                                </div>
+                            </div>
+
+                            <div class="bg-[#1f2133] p-4 rounded-xl border border-[#3a3962] space-y-2">
+                                <div class="text-[10px] font-bold text-white orbitron border-b border-gray-700 pb-2">VISUAL EVASION (GRID BREAKER)</div>
+                                <div class="flex justify-between text-[10px] text-gray-400"><span>Micro-Rotation</span> <span class="text-[#54d7f6]">AUTO</span></div>
+                                <div class="flex justify-between text-[10px] text-gray-400"><span>Elastic Stretch</span> <span class="text-[#54d7f6]">AUTO</span></div>
+                                <div class="flex justify-between text-[10px] text-gray-400"><span>Smart Crop</span> <span class="text-[#54d7f6]">{{ aspectRatio === 'original' ? 'OFF' : 'ACTIVE' }}</span></div>
+                            </div>
+
+                            <div class="bg-[#1f2133] p-4 rounded-xl border border-[#3a3962] mt-auto">
+                                <button @click="startProcess" :disabled="!videoSrc || isProcessing" class="w-full py-4 bg-gradient-to-r from-[#54d7f6] to-[#00aaff] hover:from-[#4bc3e0] hover:to-[#0099eb] disabled:from-gray-700 disabled:to-gray-800 disabled:text-gray-500 text-[#171925] font-black rounded-lg orbitron tracking-widest transition-all shadow-lg transform active:scale-95 disabled:scale-100 flex items-center justify-center gap-2 text-sm md:text-base">
+                                    <span v-if="!isProcessing"><i class="mdi mdi-shield-check text-lg"></i> EXECUTE CLOAK</span>
+                                    <span v-else><i class="mdi mdi-loading mdi-spin"></i> RENDERING...</span>
+                                </button>
+                                <div v-if="downloadUrl" class="mt-3 animate__animated animate__fadeIn">
+                                    <a :href="downloadUrl" :download="outputName" class="block w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded text-xs tracking-widest text-center transition"><i class="mdi mdi-download"></i> DOWNLOAD RESULT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+
+                document.getElementById('view-app').innerHTML = appHTML;
+                this.switchTab('lander');
+            },
+
+            async loadPartial(id, url) {
+                try {
+                    const res = await fetch(url);
+                    const html = await res.text();
+                    document.getElementById(id).innerHTML = html;
+                } catch(e) { console.error("Load Failed:", e); }
+            },
+
+            switchTab(tab) {
+                document.getElementById('view-lander').classList.add('hidden-view');
+                document.getElementById('view-app').classList.add('hidden-view');
+                document.getElementById(`view-${tab}`).classList.remove('hidden-view');
+                const btnLander = document.getElementById('tab-lander');
+                const btnApp = document.getElementById('tab-app');
+                if(tab === 'lander') { btnLander.classList.add('active'); btnApp.classList.remove('active'); }
+                else { btnApp.classList.add('active'); btnLander.classList.remove('active'); if (!this.vueApp) this.initVueApp(); }
+            },
+
+            initVueApp() {
+                const { createApp, ref, nextTick } = Vue;
+
+                this.vueApp = createApp({
+                    setup() {
+                        const videoSrc = ref(null);
+                        const fileName = ref('');
+                        const isProcessing = ref(false);
+                        const isPreviewingAudio = ref(false);
+                        const isPlaying = ref(false);
+                        const progressPercent = ref(0);
+                        const statusText = ref('SYSTEM READY');
+                        const downloadUrl = ref(null);
+                        const outputName = ref('');
+
+                        // Params
+                        const volOriginal = ref(100);
+                        const volJammer = ref(80);
+                        const aspectRatio = ref('original');
+
+                        const fileInput = ref(null);
+                        const videoRef = ref(null);
+                        const canvasRef = ref(null);
+
+                        let audioCtx = null;
+                        let originalBuffer = null;
+                        let previewSource = null;
+                        let previewDebounce = null;
+                        let animationId = null;
+                        let mediaRecorder = null;
+
+                        const triggerUpload = () => fileInput.value.click();
+                        const changeVideo = () => fileInput.value.click();
+
+                        const handleFile = async (e) => {
+                            const file = e.target.files[0];
+                            if (!file) return;
+
+                            // RESET STATE
+                            if (videoSrc.value) URL.revokeObjectURL(videoSrc.value);
+                            if (downloadUrl.value) URL.revokeObjectURL(downloadUrl.value);
+                            stopAudioPreview();
+                            isPlaying.value = false;
+                            downloadUrl.value = null;
+
+                            fileName.value = file.name;
+                            videoSrc.value = URL.createObjectURL(file);
+                            outputName.value = `CLOAKED_${Math.floor(Math.random()*10000)}_${file.name.replace(/\.[^/.]+$/, "")}.mp4`;
+
+                            nextTick(async () => {
+                                const vid = videoRef.value;
+                                vid.src = videoSrc.value;
+                                vid.load(); // Ensure re-load
+
+                                statusText.value = "ANALYZING AUDIO...";
+                                const arrayBuffer = await file.arrayBuffer();
+                                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                                originalBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+                                statusText.value = "READY";
+
+                                vid.onloadedmetadata = () => {
+                                    updateCanvasSize();
+                                    drawStaticFrame(); // Draw first frame explicitly
+                                };
+                            });
+                        };
+
+                        const setAspectRatio = (ratio) => {
+                            aspectRatio.value = ratio;
+                            updateCanvasSize();
+                            if(!isPlaying.value) drawStaticFrame();
+                        };
+
+                        const updateCanvasSize = () => {
+                            const vid = videoRef.value;
+                            const cvs = canvasRef.value;
+                            if(!vid || !cvs) return;
+
+                            if(aspectRatio.value === 'original') {
+                                cvs.width = vid.videoWidth;
+                                cvs.height = vid.videoHeight;
+                            } else if (aspectRatio.value === '9:16') {
+                                cvs.width = 1080;
+                                cvs.height = 1920;
+                            } else if (aspectRatio.value === '16:9') {
+                                cvs.width = 1920;
+                                cvs.height = 1080;
+                            }
+                        };
+
+                        // --- SIMPLE PLAYBACK PREVIEW ---
+                        const togglePlayback = () => {
+                            const vid = videoRef.value;
+                            if(vid.paused) {
+                                vid.play();
+                                isPlaying.value = true;
+                                previewLoop();
+                            } else {
+                                vid.pause();
+                                isPlaying.value = false;
+                                cancelAnimationFrame(animationId);
+                            }
+                        };
+
+                        const onVideoEnded = () => {
+                            isPlaying.value = false;
+                            cancelAnimationFrame(animationId);
+                        };
+
+                        // Loop for preview playback (Raw Video only)
+                        const previewLoop = () => {
+                            if(!isPlaying.value) return;
+                            drawStaticFrame(); // Reuse drawing logic
+                            animationId = requestAnimationFrame(previewLoop);
+                        };
+
+                        // Helper to draw video to canvas (Respecting Aspect Ratio)
+                        const drawStaticFrame = () => {
+                            const vid = videoRef.value;
+                            const cvs = canvasRef.value;
+                            const ctx = cvs.getContext('2d');
+                            const w = cvs.width;
+                            const h = cvs.height;
+
+                            ctx.clearRect(0,0,w,h);
+
+                            // Center Crop / Cover Logic
+                            const vidRatio = vid.videoWidth / vid.videoHeight;
+                            const cvsRatio = w / h;
+                            let drawW, drawH;
+
+                            if (vidRatio > cvsRatio) {
+                                drawH = h; drawW = h * vidRatio;
+                            } else {
+                                drawW = w; drawH = w / vidRatio;
+                            }
+
+                            const dx = (w - drawW) / 2;
+                            const dy = (h - drawH) / 2;
+
+                            ctx.drawImage(vid, dx, dy, drawW, drawH);
+                        };
+
+                        // --- AUDIO ENGINE: SWAP-SPLIT + AUTO-FILL ---
+                        const processAudioTrack = async (duration, isPreview = false) => {
+                            const sampleRate = originalBuffer.sampleRate;
+                            const renderDuration = isPreview ? Math.min(5, duration) : duration;
+                            const frameCount = Math.floor(renderDuration * sampleRate);
+                            const offlineCtx = new OfflineAudioContext(originalBuffer.numberOfChannels, frameCount, sampleRate);
+
+                            // 1. ORIGINAL
+                            const source = offlineCtx.createBufferSource();
+                            const tempBuf = offlineCtx.createBuffer(originalBuffer.numberOfChannels, frameCount, sampleRate);
+                            for(let c=0; c<originalBuffer.numberOfChannels; c++){
+                                tempBuf.copyToChannel(originalBuffer.getChannelData(c).slice(0, frameCount), c);
+                            }
+                            source.buffer = tempBuf;
+                            const sourceGain = offlineCtx.createGain();
+                            sourceGain.gain.value = volOriginal.value / 100;
+                            source.connect(sourceGain);
+                            sourceGain.connect(offlineCtx.destination);
+
+                            // 2. JAMMER (SWAP SPLIT)
+                            const jammerBuffer = offlineCtx.createBuffer(originalBuffer.numberOfChannels, frameCount, sampleRate);
+                            const splitPoint = Math.floor(frameCount / 2);
+
+                            for (let ch = 0; ch < originalBuffer.numberOfChannels; ch++) {
+                                const inputData = tempBuf.getChannelData(ch);
+                                const outputData = jammerBuffer.getChannelData(ch);
+                                let envelope = 0;
+                                for(let i = 0; i < frameCount; i++) {
+                                    let srcIdx = (i < (frameCount - splitPoint)) ? splitPoint + i : i - (frameCount - splitPoint);
+                                    let rawSample = (srcIdx < inputData.length) ? inputData[srcIdx] : 0;
+
+                                    // Auto-Fill Logic
+                                    const absInput = Math.abs(inputData[i]);
+                                    envelope = envelope * 0.999 + absInput * 0.001;
+                                    let silenceBoost = 1.0;
+                                    if(envelope < 0.05) silenceBoost = 1.0 + ((0.05 - envelope) * 20.0);
+
+                                    outputData[i] = rawSample * silenceBoost;
+                                }
+                            }
+                            const jammerSource = offlineCtx.createBufferSource();
+                            jammerSource.buffer = jammerBuffer;
+                            const jammerGain = offlineCtx.createGain();
+                            jammerGain.gain.value = volJammer.value / 100;
+                            jammerSource.connect(jammerGain);
+                            jammerGain.connect(offlineCtx.destination);
+
+                            source.start();
+                            jammerSource.start();
+                            return await offlineCtx.startRendering();
+                        };
+
+                        const toggleAudioPreview = async () => {
+                            if (isPreviewingAudio.value) stopAudioPreview();
+                            else {
+                                if (!originalBuffer) return;
+                                isPreviewingAudio.value = true;
+                                const renderedBuffer = await processAudioTrack(originalBuffer.duration, true);
+                                const loopCtx = new (window.AudioContext || window.webkitAudioContext)();
+                                previewSource = loopCtx.createBufferSource();
+                                previewSource.buffer = renderedBuffer;
+                                previewSource.loop = true;
+                                previewSource.connect(loopCtx.destination);
+                                previewSource.start();
+                            }
+                        };
+
+                        const stopAudioPreview = () => {
+                            if (previewSource) { try { previewSource.stop(); } catch(e){} previewSource = null; }
+                            isPreviewingAudio.value = false;
+                        };
+
+                        const updateAudioParams = () => {
+                            if(isPreviewingAudio.value) {
+                                if(previewDebounce) clearTimeout(previewDebounce);
+                                previewDebounce = setTimeout(() => { stopAudioPreview(); toggleAudioPreview(); }, 100);
+                            }
+                        };
+
+                        // --- VISUAL ENGINE: GRID BREAKER + ASPECT FIX ---
+                        const startProcess = async () => {
+                            if (!videoSrc.value) return;
+                            isProcessing.value = true;
+                            stopAudioPreview();
+                            if(isPlaying.value) { // Stop raw playback if running
+                                videoRef.value.pause();
+                                isPlaying.value = false;
+                                cancelAnimationFrame(animationId);
+                            }
+
+                            statusText.value = "ENGINE START...";
+
+                            const vid = videoRef.value;
+                            const cvs = canvasRef.value;
+                            const ctx = cvs.getContext('2d');
+
+                            // 1. RENDER AUDIO
+                            statusText.value = "PROCESSING AUDIO...";
+                            const finalAudioBuffer = await processAudioTrack(vid.duration, false);
+                            const destAudioNode = audioCtx.createMediaStreamDestination();
+                            const finalAudioSource = audioCtx.createBufferSource();
+                            finalAudioSource.buffer = finalAudioBuffer;
+                            finalAudioSource.connect(destAudioNode);
+
+                            // 2. RECORDER
+                            const canvasStream = cvs.captureStream(30);
+                            const combinedStream = new MediaStream([...canvasStream.getVideoTracks(), ...destAudioNode.stream.getAudioTracks()]);
+                            let mimeType = 'video/webm; codecs=vp9';
+                            if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'video/mp4';
+
+                            mediaRecorder = new MediaRecorder(combinedStream, { mimeType, videoBitsPerSecond: 8000000 });
+                            const chunks = [];
+                            mediaRecorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+                            mediaRecorder.onstop = () => {
+                                const blob = new Blob(chunks, { type: mimeType });
+                                downloadUrl.value = URL.createObjectURL(blob);
+                                isProcessing.value = false;
+                                statusText.value = "COMPLETED";
+                                vid.pause(); vid.currentTime = 0; vid.playbackRate = 1.0;
+                                cancelAnimationFrame(animationId);
+                                drawStaticFrame(); // Reset view
+                            };
+
+                            // 3. VISUAL RENDER LOOP
+                            statusText.value = "RENDERING GRID BREAKER...";
+                            vid.currentTime = 0; vid.playbackRate = 1.0; vid.muted = true;
+                            await vid.play();
+                            finalAudioSource.start(); mediaRecorder.start();
+
+                            let speedPhase = 0;
+                            let rotatePhase = 0;
+                            let elasticPhase = 0;
+
+                            const processFrame = () => {
+                                if (vid.paused || vid.ended) {
+                                    if (mediaRecorder.state === 'recording') mediaRecorder.stop();
+                                    return;
+                                }
+                                progressPercent.value = Math.floor((vid.currentTime / vid.duration) * 100);
+
+                                // A. NON-LINEAR SPEED (Wobble)
+                                speedPhase += 0.02;
+                                vid.playbackRate = 1.0 + (Math.sin(speedPhase) * 0.03);
+
+                                const w = cvs.width;
+                                const h = cvs.height;
+                                ctx.clearRect(0, 0, w, h);
+
+                                // B. ASPECT RATIO LOGIC (CENTER CROP / COVER)
+                                const vidRatio = vid.videoWidth / vid.videoHeight;
+                                const cvsRatio = w / h;
+                                let drawW, drawH;
+
+                                if (vidRatio > cvsRatio) {
+                                    drawH = h; drawW = h * vidRatio;
+                                } else {
+                                    drawW = w; drawH = w / vidRatio;
+                                }
+
+                                // C. GRID BREAKER EFFECTS
+                                const zoomSpeed = 0.05;
+                                const zoomAmount = 0.04;
+                                const baseScale = 1.0 + Math.abs(Math.sin(vid.currentTime * zoomSpeed) * zoomAmount);
+
+                                elasticPhase += 0.03;
+                                const stretchX = 1.0 + (Math.sin(elasticPhase) * 0.015);
+                                const stretchY = 1.0 + (Math.cos(elasticPhase) * 0.015);
+
+                                rotatePhase += 0.015;
+                                const rotationAngle = Math.sin(rotatePhase) * (Math.PI / 180 * 1.5);
+
+                                const panX = Math.cos(vid.currentTime * 0.1) * (w * 0.01);
+                                const panY = Math.sin(vid.currentTime * 0.1) * (h * 0.01);
+
+                                // Apply Scale & Stretch
+                                const finalW = drawW * baseScale * stretchX;
+                                const finalH = drawH * baseScale * stretchY;
+                                const dx = -finalW / 2;
+                                const dy = -finalH / 2;
+
+                                ctx.save();
+                                ctx.translate((w / 2) + panX, (h / 2) + panY);
+                                ctx.rotate(rotationAngle);
+                                ctx.drawImage(vid, dx, dy, finalW, finalH);
+                                ctx.restore();
+
+                                // D. OVERLAYS
+                                ctx.globalCompositeOperation = 'overlay';
+                                ctx.fillStyle = `rgba(${10 + Math.sin(vid.currentTime * 0.5)*10}, 0, ${10 + Math.cos(vid.currentTime * 0.5)*10}, 0.04)`;
+                                ctx.fillRect(0, 0, w, h);
+                                ctx.globalCompositeOperation = 'source-over';
+
+                                if (Math.random() > 0.5) {
+                                    ctx.fillStyle = `rgba(255, 255, 255, 0.03)`;
+                                    const grainX = Math.random() * w;
+                                    const grainY = Math.random() * h;
+                                    const grainW = Math.random() * 2;
+                                    ctx.fillRect(grainX, grainY, grainW, 1);
+                                }
+
+                                animationId = requestAnimationFrame(processFrame);
+                            };
+                            processFrame();
+                        };
+
+                        return {
+                            videoSrc, fileName, isProcessing, isPreviewingAudio, isPlaying, progressPercent, statusText, downloadUrl, outputName,
+                            volOriginal, volJammer, aspectRatio,
+                            fileInput, videoRef, canvasRef,
+                            triggerUpload, handleFile, startProcess, changeVideo,
+                            toggleAudioPreview, updateAudioParams, setAspectRatio, togglePlayback, onVideoEnded
+                        };
+                    }
+                }).mount('#app-mount-point');
+            }
+        };
+
+        window.appCore = AppCore;
+        window.onload = () => AppCore.init();
+    </script>
+</body>
+</html>

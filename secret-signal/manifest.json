@@ -1,0 +1,28 @@
+{
+    "id": "secret-signal",
+    "name": "SECRET SIGNAL: STEGANOGRAPHY OPS",
+    "version": "2.1.0",
+    "description": "Advanced steganography tool. Encrypt secret text into audio waves or decode hidden messages from media files using military-grade FSK modulation.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 1020,
+    "default_height": 800,
+    "slug": "secret-signal",
+    "capabilities": [
+        "audio_synthesis",
+        "frequency_analysis",
+        "steganography",
+        "local_execution",
+        "offline_capable",
+        "file_io"
+    ],
+    "tags": [
+        "security",
+        "crypto",
+        "audio",
+        "privacy"
+    ]
+}

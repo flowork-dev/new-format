@@ -1,0 +1,27 @@
+{
+    "id": "enigma-ops",
+    "ver": "1.0.1",
+    "name": "UNIVERSAL HACKER DECODER",
+    "version": "1.0.0",
+    "description": "Translate strange codes in seconds. Auto-detect & decode Base64, Hex, Binary, Morse Code, and Caesar Cipher instantly. A must-have tool for CTF and Developers.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "logic",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "slug": "enigma-ops",
+    "capabilities": [
+        "client_side_only",
+        "clipboard_write"
+    ],
+    "tags": [
+        "decoder",
+        "cryptography",
+        "ctf-tools",
+        "hacker",
+        "base64",
+        "morse"
+    ],
+    "_comment_default_width": 12,
+    "_comment_default_height": 9
+}

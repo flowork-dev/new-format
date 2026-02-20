@@ -1,0 +1,24 @@
+{
+  "id": "secret-sharing-generator",
+  "name": "Scrret Sharing : Shamir's Secret Sharing Protocol Tool",
+  "ver": "1.0.1",
+  "description": "Don't store secrets in one place. Use the Shamir algorithm to split sensitive data into separate, secure parts.",
+  "author": "Flowork Cyber Division",
+  "tier": "free",
+  "type": "logic",
+  "entry_point": "logic.js",
+  "icon_file": "icon.svg",
+  "default_width": 800,
+  "default_height": 600,
+  "resizeable": true,
+  "capabilities": [
+    "clipboard_write",
+    "local_processing"
+  ],
+  "tags": [
+    "security",
+    "crypto",
+    "privacy",
+    "tool"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+    "id": "cyber-voice",
+    "name": "Cyber Voice",
+    "ver": "1.0.3",
+    "description": "Mask your voice. Visualize your sound.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "logic",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "slug": "cyber-voice",
+    "capabilities": [
+        "microphone"
+    ],
+    "tags": [
+        "audio",
+        "tool",
+        "privacy",
+        "visualizer"
+    ]
+}

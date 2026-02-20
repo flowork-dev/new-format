@@ -1,0 +1,26 @@
+{
+    "id": "pixel-ops",
+    "name": "PIXEL OPS",
+    "ver": "2.1.0",
+    "description": "High-Performance Neural Image Compression. Shrink image files securely directly within your browser.",
+    "author": "Flowork Neural Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "pixel-ops",
+    "capabilities": [
+        "local_processing",
+        "web_workers",
+        "file_download"
+    ],
+    "tags": [
+        "utility",
+        "compression",
+        "image",
+        "optimization",
+        "tools"
+    ]
+}

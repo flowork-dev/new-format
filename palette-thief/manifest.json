@@ -1,0 +1,26 @@
+{
+    "id": "palette-thief",
+    "name": "PALETTE THIEF - WEB COLOR EXTRACTOR",
+    "ver": "1.0.0",
+    "description": "Extract color schemes (HEX Code) from any website. Steal competitor's design DNA in one click. A must-have tool for UI/UX Designers.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "palette-thief",
+    "capabilities": [
+        "cors_bypass",
+        "regex_mining",
+        "clipboard_write",
+        "file_download"
+    ],
+    "tags": [
+        "design tool",
+        "color picker",
+        "web scraper",
+        "css extractor"
+    ]
+}

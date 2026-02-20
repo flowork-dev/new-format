@@ -1,0 +1,28 @@
+{
+  "id": "ads_batch_2025_v1",
+  "iklan": "off",
+  "settings": {
+    "initial_delay_minutes": 1,
+    "interval_minutes": 25
+  },
+  "pool": [
+    {
+      "id": "ad_premium_promo",
+      "img": "https://flowork.cloud/splash/cover_m_id.webp",
+      "link": "https://flowork.cloud/flow/anti-spy",
+      "weight": 5
+    },
+    {
+      "id": "ad_community",
+      "img": "https://flowork.cloud/splash/cover_m_id.webp",
+      "link": "https://flowork.cloud/flow/anti-spy",
+      "weight": 3
+    },
+    {
+      "id": "ad_partner_01",
+      "img": "https://flowork.cloud/splash/cover_m_id.webp",
+      "link": "https://flowork.cloud/flow/anti-spy",
+      "weight": 1
+    }
+  ]
+}

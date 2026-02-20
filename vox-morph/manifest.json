@@ -1,0 +1,23 @@
+{
+    "id": "vox-morph",
+    "ver": "1.0.1",
+    "name": "VOX MORPH - HACKER VOICE",
+    "version": "1.0.0",
+    "description": "Anonymous voice changer. Record or upload audio and instantly morph your voice to sound like an anonymous hacker. 100% offline processing.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "logic",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "slug": "vox-morph",
+    "capabilities": [
+        "microphone",
+        "audio_processing"
+    ],
+    "tags": [
+        "voice changer",
+        "hacker voice",
+        "anonymous",
+        "audio tool"
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "id": "invoice-tactical",
+    "name": "TACTICAL INVOICE GENERATOR",
+    "ver": "1.0.0",
+    "description": "Generate professional invoices in seconds. Auto-calculation, local secure storage, multi-currency support (USD/IDR), and clean PDF export without watermarks.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 10,
+    "default_height": 9,
+    "slug": "invoice-tactical",
+    "capabilities": [
+        "local_storage",
+        "file_download",
+        "internet_access"
+    ],
+    "tags": [
+        "finance",
+        "invoice",
+        "pdf",
+        "productivity",
+        "business"
+    ]
+}

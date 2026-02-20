@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="512" height="512" rx="100" fill="#171925" />
+
+    <rect x="100" y="100" width="100" height="312" rx="20" fill="#f59e0b" opacity="0.8"/>
+    <rect x="220" y="100" width="100" height="312" rx="20" fill="#3b82f6" opacity="0.8"/>
+    <rect x="340" y="100" width="100" height="312" rx="20" fill="#ef4444" opacity="0.8"/>
+
+    <g filter="url(#shadow)">
+        <path d="M256 360C330 360 396 310 432 256C396 202 330 152 256 152C182 152 116 202 80 256C116 310 182 360 256 360Z" fill="#171925" stroke="white" stroke-width="16"/>
+        <circle cx="256" cy="256" r="64" fill="#f59e0b"/>
+        <circle cx="256" cy="256" r="32" fill="black"/>
+        <circle cx="270" cy="240" r="10" fill="white"/>
+    </g>
+
+    <defs>
+        <filter id="shadow" x="0" y="0" width="512" height="512">
+            <feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity="0.5"/>
+        </filter>
+    </defs>
+</svg>

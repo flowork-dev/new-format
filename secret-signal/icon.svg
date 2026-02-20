@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="floworkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#54d7f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#706bf3;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="50" y="50" width="412" height="412" rx="80" fill="#171925" stroke="url(#floworkGrad)" stroke-width="20" />
+
+  <path d="M156 256h200v160a20 20 0 0 1-20 20H176a20 20 0 0 1-20-20V256z" fill="url(#floworkGrad)" filter="url(#glow)"/>
+
+  <path d="M196 256V190c0-30 20-60 60-60s60 30 60 60v66" fill="none" stroke="url(#floworkGrad)" stroke-width="25" stroke-linecap="round" />
+  <path d="M156 190c0-55 45-100 100-100s100 45 100 100" fill="none" stroke="#54d7f6" stroke-width="10" stroke-opacity="0.5" stroke-dasharray="20 10" />
+
+  <rect x="246" y="310" width="20" height="60" rx="10" fill="#171925" />
+  <circle cx="256" cy="300" r="15" fill="#171925" />
+</svg>

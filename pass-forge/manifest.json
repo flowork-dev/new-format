@@ -1,0 +1,26 @@
+{
+    "id": "pass-forge",
+    "name": "PASS FORGE",
+    "ver": "1.0.0",
+    "description": "Military-grade password generator. Create cryptographically secure passwords offline with customizable parameters and instant entropy analysis.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 8,
+    "default_height": 7,
+    "slug": "pass-forge",
+    "capabilities": [
+        "local_storage",
+        "clipboard_access",
+        "file_download"
+    ],
+    "tags": [
+        "security",
+        "utility",
+        "password",
+        "encryption",
+        "tools"
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "id": "mark-command",
+    "name": "MARK COMMAND",
+    "ver": "3.5.0",
+    "description": "README Architect. Write, preview, and download beautiful Markdown documentation directly in your browser without tracking.",
+    "author": "Flowork Developer Tools",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "mark-command",
+    "capabilities": ["local_processing", "file_download"],
+    "tags": ["developer", "markdown", "editor", "docs"]
+}

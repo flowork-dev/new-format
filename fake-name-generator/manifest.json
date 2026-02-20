@@ -1,0 +1,16 @@
+{
+    "id": "fake-name-generator",
+    "name": "FAKE NAME GENERATOR - FALSE IDENTITY GENERATOR (ANTI-TRACKING)",
+    "ver": "1.0.1",
+    "description": "DO NOT USE YOUR REAL NAME! Create a disguise profile (Burner Identity) complete with Address, Dummy CC, & fake Biometric Data instantly. Protect your privacy from suspicious websites.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "fake-name-generator",
+    "capabilities": ["client_side_only", "clipboard_write"],
+    "tags": ["fake-identity", "privacy", "mock-data", "generator", "security", "opsec"]
+}

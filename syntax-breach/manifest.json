@@ -1,0 +1,26 @@
+{
+    "id": "syntax-breach",
+    "name": "SYNTAX BREACH",
+    "ver": "1.0.0",
+    "description": "Universal Data Converter. Transform JSON, CSV, Base64, and URL Encoding instantly.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "syntax-breach",
+    "capabilities": [
+        "local_processing",
+        "clipboard_write",
+        "file_download"
+    ],
+    "tags": [
+        "developer",
+        "tools",
+        "converter",
+        "json",
+        "csv"
+    ]
+}

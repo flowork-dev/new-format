@@ -1,0 +1,16 @@
+{
+    "id": "meta-ghost",
+    "name": "META GHOST",
+    "ver": "2.1.0",
+    "description": "Digital Forensics & Privacy Tool. Analyze photos and strip away hidden EXIF metadata like GPS coordinates before sharing online.",
+    "author": "Flowork Security Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "meta-ghost",
+    "capabilities": ["local_processing", "file_download", "canvas_manipulation"],
+    "tags": ["privacy", "security", "exif", "metadata", "cleaner"]
+}

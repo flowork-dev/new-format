@@ -1,0 +1,16 @@
+{
+    "id": "watermark-ops",
+    "name": "ASSET GUARD",
+    "ver": "14.0.0",
+    "description": "Bulk image watermarking tool. Apply protective text overlay across hundreds of product photos instantly inside your browser.",
+    "author": "Flowork Security Division",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 9,
+    "slug": "watermark-ops",
+    "capabilities": ["local_processing", "file_download", "canvas_manipulation"],
+    "tags": ["security", "watermark", "protection", "bulk", "image"]
+}

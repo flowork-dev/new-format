@@ -1,0 +1,25 @@
+{
+    "id": "palette-recon",
+    "name": "PALETTE RECON",
+    "ver": "2.0.0",
+    "description": "Advanced visual intelligence tool for color extraction. Analyze thumbnails and images to uncover dominant color palettes and psychological vibes.",
+    "author": "Flowork Creative Ops",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 10,
+    "default_height": 9,
+    "slug": "palette-recon",
+    "capabilities": [
+        "local_processing",
+        "image_analysis",
+        "clipboard_access"
+    ],
+    "tags": [
+        "design",
+        "color-picker",
+        "analytics",
+        "visual-intel"
+    ]
+}

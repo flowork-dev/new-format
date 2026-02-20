@@ -1,0 +1,22 @@
+{
+    "id": "void-link",
+    "name": "Void Link",
+    "ver": "1.0.1",
+    "description": "Send unlimited files directly to other devices. No middleman, just the Void.",
+    "author": "Flowork Cyber Division",
+    "tier": "free",
+    "type": "logic",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "slug": "void-link",
+    "capabilities": [
+        "internet_access",
+        "clipboard_write"
+    ],
+    "tags": [
+        "p2p",
+        "transfer",
+        "security",
+        "utility"
+    ]
+}

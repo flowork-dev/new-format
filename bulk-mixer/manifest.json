@@ -1,0 +1,20 @@
+{
+    "id": "bulk-mixer",
+    "name": "BULK MIXER (CONTENT FACTORY)",
+    "version": "1.0.0",
+    "description": "Automatic Mass Production Tool. Merge Video folder with Audio folder automatically.",
+    "author": "Flowork Media Ops",
+    "tier": "free",
+    "type": "apps",
+    "entry_point": "logic.js",
+    "icon_file": "icon.svg",
+    "default_width": 12,
+    "default_height": 10,
+    "slug": "bulk-mixer",
+    "capabilities": [
+        "folder_upload",
+        "batch_processing",
+        "ffmpeg_wasm"
+    ],
+    "tags": ["automation", "video", "bulk", "mixer"]
+}
